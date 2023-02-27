@@ -42,6 +42,7 @@ const Future = () =>{
 	const sort = 6;
 	const activePag = useRef(0);
 	const [test, settest] = useState(0);
+    const [selectedModuleText, setSelectedModuleText] = useState("Select Token Type")
 
 	// Active data
 	const chageData = (frist, sec) => {
@@ -73,87 +74,59 @@ const Future = () =>{
 		chageData(activePag.current * sort, (activePag.current + 1) * sort);
 		settest(i);
 	};
+
+    const moduleData = [
+        {
+            text:'0 Tax Basic'
+        },
+        {
+            text:'Market & Liquidity'
+        },
+        {
+            text:'Reward, Market & Liquidity'
+        },
+        {
+            text:'0 Tax Basic'
+        },
+        {
+            text:'0 Tax Basic'
+        },
+    ]
+
+    const selectModuleValue = (value) => {
+        console.log(value)
+        setSelectedModuleText(moduleData[value].text)
+    }
     return(
         <>
             <div className="row">
-                <div className="col-xxl-8">
-                    <div className="card">
-                        <div className="card-header border-0 flex-wrap">
-                            <div className="mb-2">
-                                <h4 className="heading m-0">Future Chart</h4>
-                                <span className="fs-16">Lorem ipsum dolor sit amet, consectetur</span>
-                            </div>
-                            <Dropdown className="custom-dropdown mb-0">
-                                <Dropdown.Toggle as="div" className="btn sharp  tp-btn i-false btn-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><rect x="0" y="0" width="24" height="24"></rect>
-                                            <circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2">
-                                            </circle><circle fill="#000000" cx="12" cy="19" r="2"></circle>
-                                        </g>
-                                    </svg>
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu className="dropdown-menu-end mb-0" align="end">
-                                    <Dropdown.Item>Option 1</Dropdown.Item>
-                                    <Dropdown.Item>Option 2</Dropdown.Item>
-                                    <Dropdown.Item>Option 3</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </div>
-                        <div className="card-body pt-0">
-                            {/* <div id="tradingview_85dc0" className=""></div>
-                            <BitCoinChart /> */}
-                            <div className="d-flex align-items-center justify-content-between flex-wrap">
-                                <div className="d-flex align-items-center justify-content-between flex-wrap">
-                                    <div className="price-content">
-                                        <span className="fs-18 d-block mb-2">Price</span>
-                                        <h4 className="fs-20 font-w600">$9,542.39</h4>
-                                    </div>
-                                    <div className="price-content">
-                                        <span className="fs-14 d-block mb-2">24h% change</span>
-                                        <h4 className="font-w600 text-success">1.64%<i className="fa-solid fa-caret-up ms-1 text-success"></i></h4>
-                                    </div>
-                                    <div className="price-content">
-                                        <span className="fs-14 d-block mb-2">Volume (24h)</span>
-                                        <h4 className="font-w600">$47.22B</h4>
-                                    </div>
-                                    <div className="price-content">
-                                        <span className="fs-14 d-block mb-2">Market Cap</span>
-                                        <h4 className="font-w600">$219.24B</h4>
-                                    </div>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                    <h4 className="me-5 font-w600 mb-0"><span className="text-success me-2">BUY</span> $5,673</h4>
-                                    <h4 className="font-w600 mb-0"><span className="text-danger me-2">SELL</span> $5,982</h4>
-                                </div>
-                            </div>	
-                            {/* <div id="bitcoinhChart"></div> */}
-                            <BitCoinChart />
-                        </div>
-                    </div>
-                </div>
                 <div className="col-xxl-4">
                     <div className="card">
                         <div className="card-header border-0 pb-0">
-                            <h4 className="heading mb-0">Future Trade</h4>
+                            <h4 className="heading mb-0">Create Token</h4>
                         </div>
                         <div className="card-body pt-2">
-                            <div className="d-flex align-items-center justify-content-between my-3">
+                            {/* <div className="d-flex align-items-center justify-content-between my-3">
                                 <span className="small text-muted">Avbl Balance</span>
                                 <span className="">210.800 USDT</span>
-                            </div>
+                            </div> */}
                             <form>
-                                <div className="input-group mb-3">
-                                    <span className="input-group-text">Price</span>
+                                {/* <div className="input-group mb-3">
+                                    <span className="input-group-text">Token Type</span>
                                     <input type="text" className="form-control" />
                                     <span className="input-group-text">USDT</span>
-                                </div>
+                                </div> */}
                                 <div className="input-group mb-3">
-                                    <span className="input-group-text">Size</span>
-                                    <input type="text" className="form-control" />
+                                    <span className="input-group-text">Token Type</span>
+                                    <input type="text" className="form-control"/>
                                     <Dropdown>
-                                        <Dropdown.Toggle  className="btn btn-primary btn-outline-primary left-radius">USDT</Dropdown.Toggle>
+                                        <Dropdown.Toggle  className="btn btn-primary btn-outline-primary left-radius">{selectedModuleText}</Dropdown.Toggle>
                                         <Dropdown.Menu align="end"> 
-                                            <Dropdown.Item>USDT</Dropdown.Item>
+                                            <Dropdown.Item><div onClick={()=>selectModuleValue(0)}>0 Tax Basic</div></Dropdown.Item>
+                                            <Dropdown.Item><div onClick={()=>selectModuleValue(1)}>Market & Liquidity</div></Dropdown.Item>
+                                            <Dropdown.Item>0 Tax Basic Module</Dropdown.Item>
+                                            <Dropdown.Item>0 Tax Basic Module</Dropdown.Item>
+                                            <Dropdown.Item>0 Tax Basic Module</Dropdown.Item>
                                             <Dropdown.Item>BTC</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
