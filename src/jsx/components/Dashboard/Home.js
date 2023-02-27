@@ -50,7 +50,7 @@ const tooksList = [
 	{ icon: LtcIcon, classBg: 'bg-success', Name: 'Create Token', },
 	{ icon: BtcIcon, classBg: 'bg-warning', Name: 'Token Control Panel', },
 	{ icon: XtzIcon, classBg: 'bg-primary', Name: 'Batch Tool', },
-	// { icon: EthIcon, classBg: 'bg-pink', Name: 'ETH', },
+	{ icon: EthIcon, classBg: 'bg-pink', Name: 'Send Tokens Via Webpage', },
 	// { icon: XtzIcon, classBg: 'bg-primary', Name: 'XTZ', },
 ];
 
@@ -123,7 +123,10 @@ const Home = () => {
 						</div>
 					</div>
 				</div>
-
+				
+				{/*
+					Swap Function
+				*/}
 				{/* <div className="col-xl-6">
 					<div className="row">
 						<div className="col-xl-12 col-sm-12">
