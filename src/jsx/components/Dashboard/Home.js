@@ -14,7 +14,8 @@ import OrderForm from './Dashboard/OrderForm';
 import { LtcIcon, BtcIcon, XtzIcon, EthIcon } from './SvgIcon';
 
 //images
-import coin from './../../../images/coin.png';
+import coin from './../../../images/MyCoin.png';
+// import coin from './../../../images/coin.png';
 import metaverse from './../../../images/metaverse.png';
 
 
@@ -62,7 +63,7 @@ const listData = [
 ];
 
 const Home = () => {
-	
+
 	const { changeBackground } = useContext(ThemeContext);
 	useEffect(() => {
 		changeBackground({ value: "light", label: "Light" });
@@ -76,15 +77,15 @@ const Home = () => {
 						<div className="col-xl-12">
 							<div className="card bubles">
 								<div className="card-body">
-									<div className="buy-coin  bubles-down">
-										<div>
-											<h2>Ryo Tools</h2>
-											<p>Create Token By One Click. Send Tokens Via Website.</p>
+									<div className="buy-coin  bubles-down col-12">
+										<div className='col-12'style={{paddingLeft:'20px'}}>
+											<h2>Web 3 Tools</h2>
+											<p style={{paddingLeft:'20px'}}>
+												The Best Web3 Tool Aggregator.<br/>
+												Visulize Web3 Transactions.
+											</p>
 											{/* <p>Send Tokens Via Website</p> */}
 											<Link to={"/exchange"} className="btn btn-primary">Create Token</Link>
-										</div>
-										<div className="coin-img">
-											<img src={coin} className="img-fluid" alt="" />
 										</div>
 									</div>
 								</div>
@@ -124,7 +125,7 @@ const Home = () => {
 						</div>
 					</div>
 				</div>
-				
+
 				{/*
 					Swap Function
 				*/}
