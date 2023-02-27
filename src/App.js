@@ -56,6 +56,7 @@ function App(props) {
       <Route path='/page-forgot-password' element={<ForgotPassword />} />
     </Routes>
   );
+  
   if (props.isAuthenticated) {
     return (
       <>
