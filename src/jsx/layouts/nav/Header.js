@@ -127,7 +127,7 @@ const Header = ({ onNote }) => {
 							<Dropdown.Toggle as='div' className='i-false sidebar-select'>{rightSelect} <i className="fa-solid fa-angle-down ms-2" /></Dropdown.Toggle>
 							<Dropdown.Menu>
 								<Dropdown.Item onClick={()=>setRightSelect("Eng")}>Eng</Dropdown.Item>
-								<Dropdown.Item onClick={()=>setRightSelect("Af")}>Af</Dropdown.Item>
+								<Dropdown.Item onClick={()=>setRightSelect("中")}>中</Dropdown.Item>
 								<Dropdown.Item onClick={()=>setRightSelect("Al")}>Al</Dropdown.Item>
 							</Dropdown.Menu>
 						</Dropdown>
