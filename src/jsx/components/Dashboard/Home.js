@@ -62,9 +62,10 @@ const listData = [
 ];
 
 const Home = () => {
+	
 	const { changeBackground } = useContext(ThemeContext);
 	useEffect(() => {
-		changeBackground({ value: "dark", label: "Dark" });
+		changeBackground({ value: "light", label: "Light" });
 	}, []);
 
 	return (

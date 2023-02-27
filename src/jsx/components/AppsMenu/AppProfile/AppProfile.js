@@ -20,7 +20,8 @@ import profile06 from "../../../../images/profile/6.jpg";
 import profile07 from "../../../../images/profile/7.jpg";
 import profile08 from "../../../../images/profile/8.jpg";
 import profile09 from "../../../../images/profile/9.jpg";
-import profile from "../../../../images/profile/profile.png";
+// import profile from "../../../../images/profile/profile.png";
+import profile from "../../../../images/profile/AvatarDog.jpg";
 import PageTitle from "../../../layouts/PageTitle";
 
 const galleryBlog = [
@@ -69,7 +70,12 @@ const AppProfile = () => {
 							</div>
 							<div className="profile-info">
 								<div className="profile-photo">
-									<img src={profile} className="img-fluid rounded-circle" alt="NFT_Avatar" />
+									<img
+										src={profile}
+										className="img-fluid rounded-circle"
+										alt="NFT_Avatar"
+										style={{width:'100px',height:'100px'}}
+									/>
 									{/* <img className="img-fluid rounded-circle" alt="NFT_Avatar" /> */}
 								</div>
 								<div className="profile-details">
