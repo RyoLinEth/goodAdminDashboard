@@ -69,7 +69,7 @@ const BalanceCardSlider = () =>{
 						</div>
 					</div>
 				</SwiperSlide>
-				<SwiperSlide>
+				{/* <SwiperSlide>
 					<div className="card card-wiget">
 						<div className="card-body">
 							<div className="card-wiget-info">
@@ -95,15 +95,14 @@ const BalanceCardSlider = () =>{
 
 						</div>
 					</div>
-				</SwiperSlide>
-				<SwiperSlide>
+				</SwiperSlide> */}
+				{/* <SwiperSlide>
 					<div className="card card-wiget">
 						<div className="card-body">
 							<div className="card-wiget-info">
 								<h4 className="count-num">$2,478.90</h4>
 								<p className="sm-chart">Total Deposit</p>
 							</div>
-							{/* <div id="TotaldipositChart"></div> */}
 							<TotaldipositChart />
 						</div>
 						<div className="back-icon">
@@ -152,7 +151,7 @@ const BalanceCardSlider = () =>{
 					</div>	
 				</SwiperSlide>
 									
-				
+				 */}
 			</Swiper>
         </>
     )
