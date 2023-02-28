@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Col, Table, Card, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import { Col, Table, Card, Button, Modal, } from "react-bootstrap";
 import './ControlPanel.css'
 
 export const CanModify = () => {
@@ -12,12 +13,15 @@ export const CanModify = () => {
 
 const ControlPanel = () => {
     const [isOpen, setIsOpen] = useState([true, true, true, true, true])
+    const [modalWithTooltip, setModalWithTooltip] = useState(false);
+    const [modifying, setModifying] = useState([]);
 
     const contractDatas = [
         [
             {
                 title: "Basic Info",
                 bg: "primary",
+                description: 'Basic info of the contract, only marketing wallet can be modified',
             },
             {
                 title: "Contract Address",
@@ -70,6 +74,7 @@ const ControlPanel = () => {
             {
                 title: "Buy Tax Info",
                 bg: "primary",
+                description: 'Buy taxes of the contract',
             },
             {
                 title: "Buy Taxes",
@@ -105,6 +110,7 @@ const ControlPanel = () => {
             {
                 title: "Sell Tax Info",
                 bg: "primary",
+                description: 'Sell taxes of the contract',
             },
             {
                 title: "Sell Taxes",
@@ -136,10 +142,64 @@ const ControlPanel = () => {
                 canModify: true,
             },
         ],
+        [
+            {
+                title: "Max Amounts",
+                bg: "primary",
+                description: 'Limitation of transactions of the contract',
+            },
+            {
+                title: "Max Wallet Amount",
+                text: "Max Wallet Amount",
+                bg: "primary",
+                canModify: true,
+            },
+            {
+                title: "Max Buy Amount",
+                text: "Max Buy Amount",
+                bg: "primary",
+                canModify: true,
+            },
+            {
+                title: "Max Sell Amount",
+                text: "Max Sell Amount",
+                bg: "primary",
+                canModify: true,
+            },
+        ],
     ]
 
-    const handleModifyModal = (index, indexed) => {
-        console.log(index, indexed);
+    const addressDatas = [
+        [
+            {
+                title: "Blacklist Info",
+                bg: "primary",
+            },
+            {
+                title: "Address",
+                text: "Input the address you",
+                bg: "primary",
+                canModify: true,
+            },
+            {
+                title: "Max Buy Amount",
+                text: "Max Buy Amount",
+                bg: "primary",
+                canModify: true,
+            },
+            {
+                title: "Max Sell Amount",
+                text: "Max Sell Amount",
+                bg: "primary",
+                canModify: true,
+            },
+        ],
+    ]
+
+    const handleModifyModal = (index, indexed, title, text) => {
+        console.log(index, indexed, title, text);
+        setModalWithTooltip(true)
+        setModifying([index, indexed, title, text]);
     }
     return (
         <div className="h-80">
@@ -155,10 +215,11 @@ const ControlPanel = () => {
 
                                 <Button className="me-2" variant="primary">
                                     <i className="fa fa-pencil-square" />
+                                    {" "}Edit
                                 </Button>
                                 <CanModify />
                                 <span>
-                                    Means the parameter is changeable<br />
+                                    Editable
                                 </span>
                             </Card.Subtitle>
                         </Card.Header>
@@ -197,6 +258,78 @@ const ControlPanel = () => {
                                                             <tr key={i}>
                                                                 <th>
                                                                     <span style={{ paddingLeft: '20px', justifyContent: 'center', alignItems: 'center' }}>
+                                                                        <span className="d-flex align-items-center max-width-100">{d.title}</span>
+                                                                        {
+                                                                            d.canModify !== undefined && <CanModify />
+                                                                        }
+                                                                    </span>
+                                                                </th>
+                                                                <td className='scrollable-element' style={{ maxWidth: '150px', overflowX: 'scroll' }}>
+                                                                    <span>{d.text}</span>
+                                                                </td>
+                                                                <td>
+                                                                    {
+                                                                        d.canModify !== undefined &&
+                                                                        <div onClick={
+                                                                            () => handleModifyModal(index, i, d.title, d.text)
+                                                                        }>
+                                                                            <Button className="me-2" variant="primary">
+                                                                                <i className="fa fa-pencil-square"></i>
+                                                                                {" "}Edit
+                                                                            </Button>
+                                                                        </div>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
+                                            </tbody>
+                                            {
+                                                !isOpen[index] &&
+                                                <span>{data[0].description}</span>
+                                            }
+                                        </Table>
+                                    </Card.Body>
+                                )
+                            })
+                        }
+                        {
+                            addressDatas.map((data, index) => {
+                                let contractDatasLength = contractDatas.length
+                                return (
+                                    <Card.Body key={index + contractDatasLength}>
+                                        <Table responsive>
+                                            <thead
+                                                className="thead-info"
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() =>
+                                                    setIsOpen(prevState => {
+                                                        const newState = [...prevState];
+                                                        newState[index + contractDatasLength] = !prevState[index + contractDatasLength];
+                                                        return newState;
+                                                    })
+                                                }>
+                                                <tr>
+                                                    <th scope='col'>
+                                                        {data[0].title}
+                                                        <span
+                                                            style={{ paddingLeft: '20px' }}
+                                                        >{isOpen[index + contractDatasLength] === true ? "▼" : "▶"}</span>
+                                                    </th>
+                                                    <th scope="col"></th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    isOpen[index + contractDatasLength] &&
+                                                    data.map((d, i) => {
+                                                        if (i === 0) return
+                                                        return (
+                                                            <tr key={i}>
+                                                                <th>
+                                                                    <span style={{ paddingLeft: '20px', justifyContent: 'center', alignItems: 'center' }}>
                                                                         <span className="d-flex align-items-center">{d.title}</span>
                                                                         {
                                                                             d.canModify !== undefined && <CanModify />
@@ -209,7 +342,7 @@ const ControlPanel = () => {
                                                                 <td>
                                                                     {
                                                                         d.canModify !== undefined &&
-                                                                        <div onClick={() => handleModifyModal(index, i)}>
+                                                                        <div onClick={() => handleModifyModal(index + contractDatasLength, i)}>
                                                                             <Button className="me-2" variant="primary">
                                                                                 <i className="fa fa-pencil-square" />
                                                                             </Button>
@@ -257,6 +390,40 @@ const ControlPanel = () => {
                     </div>
                 </div>
             </div>
+
+            <Modal className="fade" show={modalWithTooltip}>
+                {
+                    console.log(modifying)
+                }
+                <Modal.Header>
+                    <Modal.Title>Setting {modifying[2]}</Modal.Title>
+                    <Button
+                        variant=""
+                        className="btn-close"
+                        onClick={() => setModalWithTooltip(false)}
+                    >
+
+                    </Button>
+                </Modal.Header>
+                <Modal.Body>
+                    <h5>Origin {modifying[2]}</h5>
+                    <p>
+                        {modifying[3]}
+                    </p>
+                    <hr />
+                    <h5>Input New {modifying[2]}</h5>
+                    <input className='form-control' />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button
+                        variant="danger light"
+                        onClick={() => setModalWithTooltip(false)}
+                    >
+                        Close
+                    </Button>
+                    <Button variant="primary">Confirm</Button>
+                </Modal.Footer>
+            </Modal>
         </div >
     );
 };
