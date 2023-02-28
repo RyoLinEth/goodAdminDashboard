@@ -141,11 +141,16 @@ import Error500 from "./pages/Error500";
 import Error503 from "./pages/Error503";
 import { ThemeContext } from "../context/ThemeContext";
 
+//UnderConstruction
+import UnderConstruction from "../mypages/UnderConstruction";
 
 
 const Markup = () => {
 
   const allroutes = [
+    // Under Construction
+    { url: "under-construction", component: <UnderConstruction /> },
+
     /// Dashboard
     { url: "", component: <Home /> },
     { url: "dashboard", component: <Home /> },

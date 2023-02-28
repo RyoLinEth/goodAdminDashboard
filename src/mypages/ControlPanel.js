@@ -158,7 +158,7 @@ const ControlPanel = () => {
                                 </Button>
                                 <CanModify />
                                 <span>
-                                    Means the data is changeable<br />
+                                    Means the parameter is changeable<br />
                                 </span>
                             </Card.Subtitle>
                         </Card.Header>

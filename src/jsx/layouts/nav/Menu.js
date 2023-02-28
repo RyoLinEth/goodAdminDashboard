@@ -39,7 +39,7 @@ export const MenuList = [
 
         // ],
     },
-    //Trading
+    //Token
     {
         title: 'Token',
         classsChange: 'mm-collapse',
@@ -50,6 +50,10 @@ export const MenuList = [
                 to: 'create-token',
             },
             {
+                title: 'Create NFT Token',
+                to: 'under-construction',
+            },
+            {
                 title: 'My Token List',
                 to: 'token-list',
             },
@@ -57,18 +61,79 @@ export const MenuList = [
                 title: 'Control Panel',
                 to: 'control-panel',
             },
-            // {
-            //     title: 'P2P',
-            //     to: 'p2p',
-            // },
-            // {
-            //     title: 'Future',
-            //     to: 'future',
-            // }, 
-            // {
-            //     title: 'Intraday Trading',
-            //     to: 'intraday-trading',
-            // },
+            {
+                title: 'Lock Token',
+                to: 'control-panel',
+            },
+            {
+                title: 'MultiSend Token',
+                to: 'control-panel',
+            },
+        ]
+    },
+    //Token
+    {
+        title: 'Fund Raising',
+        classsChange: 'mm-collapse',
+        iconStyle: <i className="material-icons">generating_tokens</i>,
+        content: [
+            {
+                title: 'Create Presale',
+                to: 'create-token',
+            },
+            {
+                title: 'Create IDO',
+                to: 'token-list',
+            },
+        ]
+    },
+    {
+        title: 'Launchpads',
+        classsChange: 'mm-collapse',
+        iconStyle: <i className="material-icons">rocket_launch</i>,
+        content: [
+            {
+                title: 'Presale List',
+                to: 'create-token',
+            },
+            {
+                title: 'IDO List',
+                to: 'token-list',
+            },
+        ]
+    },
+    {
+        title: 'Social',
+        classsChange: 'mm-collapse',
+        iconStyle: <i className="material-icons">emoji_people</i>,
+        content: [
+            {
+                title: 'Send Message',
+                to: 'create-token',
+            },
+            {
+                title: 'My Message Box',
+                to: 'token-list',
+            },
+        ]
+    },
+    {
+        title: 'Visualize',
+        classsChange: 'mm-collapse',
+        iconStyle: <i className="material-icons">remove_red_eye</i>,
+        content: [
+            {
+                title: 'Send Token',
+                to: 'create-token',
+            },
+            {
+                title: 'Make a Gift Box',
+                to: 'token-list',
+            },
+            {
+                title: 'Watch My Gift Boxes',
+                to: 'token-list',
+            },
         ]
     },
     {

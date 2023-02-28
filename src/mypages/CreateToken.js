@@ -356,7 +356,7 @@ const CreateToken = () => {
             <div className="row">
                 <div className="col-xxl-4">
                     <h1> Token Creator </h1>
-                    <div className="card">
+                    <div className="card d-flex flex-wrap">
                         <div className="card-header border-0 pb-0">
                             <h4 className="heading mb-0">Token Type</h4>
                         </div>
@@ -374,11 +374,9 @@ const CreateToken = () => {
 
 
                                 {/* 選擇合約模板 */}
-                                <div className="input-group mb-3 d-flex flex-direction-row align-items-center">
-                                    <span className="input-group-text form-control col-2">Token Type</span>
-                                    <span className="form-control col-6" style={{ color: 'lightblue' }}> Fee : {moduleDatas[selectedModuleValue].fee}</span>
+                                <div className="input-group mb-3 d-flex flex-wrap align-items-center">
                                     <Dropdown>
-                                        <Dropdown.Toggle className="form-control width-200 btn btn-primary btn-outline-primary left-radius">{moduleDatas[selectedModuleValue].text}</Dropdown.Toggle>
+                                        <Dropdown.Toggle className="form-control width-200 btn btn-primary btn-outline-primary right-radius">{moduleDatas[selectedModuleValue].text}</Dropdown.Toggle>
                                         <Dropdown.Menu align="end">
                                             {
                                                 moduleDatas.map((moduleData, index) => {
@@ -398,6 +396,7 @@ const CreateToken = () => {
                                             }
                                         </Dropdown.Menu>
                                     </Dropdown>
+                                    <span className="form-control col-6" style={{ color: 'lightblue' }}> {moduleDatas[selectedModuleValue].fee}</span>
                                 </div>
                                 <div style={{
                                     paddingLeft: '20px',
