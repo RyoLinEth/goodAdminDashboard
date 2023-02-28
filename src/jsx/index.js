@@ -22,6 +22,9 @@ import Dashboard3 from "./components/Dashboard/Dashboard3";
 import Dashboard4 from "./components/Dashboard/Dashboard4";
 import Dashboard5 from "./components/Dashboard/Dashboard5";
 
+//Token
+import CreateToken from "../mypages/CreateToken";
+import TokenList from "../mypages/TokenList";
 
 //Trading
 import Market from './components/Trading/Market';
@@ -151,7 +154,10 @@ const Markup = () => {
     { url: "index-4", component: <Dashboard4 /> },
     { url: "index-5", component: <Dashboard5 /> },
     
-    
+    //Token
+    { url: "create-token", component: <CreateToken /> },
+    { url: "token-list", component: <TokenList /> },
+
     //Trading
     { url: "market", component: <Market /> },
     { url: "ico-listing", component: <IcoListing /> },

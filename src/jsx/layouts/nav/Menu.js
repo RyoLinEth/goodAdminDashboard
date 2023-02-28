@@ -4,41 +4,68 @@ export const MenuList = [
         title: 'Dashboard',	
         classsChange: 'mm-collapse',		
         iconStyle: <i className="material-icons">grid_view</i>,
-        content: [
+        // content: [
             
-            {
-                title: 'Dashboard Light',
-                to: 'dashboard',					
-            },
-            // {
-            //     title: 'Dashboard Dark',
-            //     to: 'dashboard-dark',
-            // },
-            // {
-            //     title: 'Dashboard-2',
-            //     to: 'index-1',
-            // },
-            // {
-            //     title: 'Dashboard-3',
-            //     to: 'index-3',
+        //     {
+        //         title: 'Dashboard Light',
+        //         to: 'dashboard',					
+        //     },
+        //     // {
+        //     //     title: 'Dashboard Dark',
+        //     //     to: 'dashboard-dark',
+        //     // },
+        //     // {
+        //     //     title: 'Dashboard-2',
+        //     //     to: 'index-1',
+        //     // },
+        //     // {
+        //     //     title: 'Dashboard-3',
+        //     //     to: 'index-3',
                 
 
-            // },
-            // {
-            //     title: 'Dashboard-4',
-            //     to: 'index-4',
+        //     // },
+        //     // {
+        //     //     title: 'Dashboard-4',
+        //     //     to: 'index-4',
                 
-            // },
-			// {
-            //     title: 'Dashboard-5',
-            //     to: 'index-5',
+        //     // },
+		// 	// {
+        //     //     title: 'Dashboard-5',
+        //     //     to: 'index-5',
                 
-            // },
+        //     // },
             
             
-        ],
+        // ],
     },
     //Trading
+    {
+        title: 'Token',
+        classsChange: 'mm-collapse',
+        iconStyle: <i className="material-icons">trending_up</i>,
+        content: [
+            {
+                title: 'Create Token',
+                to: 'create-token',
+            },
+            {
+                title: 'My Token List',
+                to: 'token-list',
+            },
+            // {
+            //     title: 'P2P',
+            //     to: 'p2p',
+            // },
+            // {
+            //     title: 'Future',
+            //     to: 'future',
+            // }, 
+			// {
+            //     title: 'Intraday Trading',
+            //     to: 'intraday-trading',
+            // },
+        ]
+    },
     {
         title: 'Trading',
         classsChange: 'mm-collapse',

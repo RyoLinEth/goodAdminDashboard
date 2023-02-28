@@ -48,8 +48,8 @@ const marketBlog = [
 ];
 
 const tooksList = [
-	{ icon: LtcIcon, classBg: 'bg-success', Name: 'Create Token', },
-	{ icon: BtcIcon, classBg: 'bg-warning', Name: 'Token Control Panel', },
+	{ icon: LtcIcon, classBg: 'bg-success', Name: 'Create Token', to: '../create-token' },
+	{ icon: BtcIcon, classBg: 'bg-warning', Name: 'My Token List', to: '../token-list', },
 	{ icon: XtzIcon, classBg: 'bg-primary', Name: 'Batch Tool', },
 	{ icon: EthIcon, classBg: 'bg-pink', Name: 'Send Tokens Via Webpage', },
 	// { icon: XtzIcon, classBg: 'bg-primary', Name: 'XTZ', },
@@ -78,10 +78,10 @@ const Home = () => {
 							<div className="card bubles">
 								<div className="card-body">
 									<div className="buy-coin  bubles-down col-12">
-										<div className='col-12'style={{paddingLeft:'20px'}}>
+										<div className='col-12' style={{ paddingLeft: '20px' }}>
 											<h2>Web 3 Tools</h2>
-											<p style={{paddingLeft:'20px'}}>
-												The Best Web3 Tool Aggregator.<br/>
+											<p style={{ paddingLeft: '20px' }}>
+												The Best Web3 Tool Website.<br />
 												Visulize Web3 Transactions.
 											</p>
 											{/* <p>Send Tokens Via Website</p> */}
@@ -96,8 +96,8 @@ const Home = () => {
 				{/* <div className="col-xl-12">
 							<BalanceCardSlider />
 						</div> */}
-				<div className="col-xl-4 market-previews col-sm-12">
-					<div className="card">
+				<div className="col-12">
+					<div className="card col-12">
 						<div className="card-header border-0 pb-0">
 							<div>
 								<h2 className="heading">Our Tools</h2>
@@ -105,21 +105,23 @@ const Home = () => {
 						</div>
 						<div className="card-body pt-0 px-0">
 							{tooksList.map((data, ind) => (
-								<div className="previews-info-list" key={ind}>
-									<div className="pre-icon">
-										<span className={`icon-box icon-box-sm ${data.classBg}`}>
-											{data.icon}
-										</span>
-										<div className="ms-2">
-											<h6>{data.Name}</h6>
+								<Link to={data.to} key={ind}>
+									<div className="previews-info-list">
+										<div className="pre-icon">
+											<span className={`icon-box icon-box-sm ${data.classBg}`}>
+												{data.icon}
+											</span>
+											<div className="ms-2">
+												<h6>{data.Name}</h6>
+											</div>
+										</div>
+										<div className="count">
+											<span> → Go </span>
+											{/* <h6>120.45</h6>
+										<span className={ind % 2 == 0 ? "text-success" : ""}>1,24%</span> */}
 										</div>
 									</div>
-									<div className="count">
-										<span> → Go </span>
-										{/* <h6>120.45</h6>
-										<span className={ind % 2 == 0 ? "text-success" : ""}>1,24%</span> */}
-									</div>
-								</div>
+								</Link>
 							))}
 
 						</div>
