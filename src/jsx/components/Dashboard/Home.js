@@ -126,7 +126,7 @@ const Home = () => {
 					</div>
 				</div>
 
-				<div className="col-12">
+				{/* <div className="col-12">
 					<div className="card">
 						<div className="card-header">
 							<h4 className="card-title">Platform token?</h4>
@@ -167,7 +167,7 @@ const Home = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 				{/*
 					Swap Function
 				*/}
