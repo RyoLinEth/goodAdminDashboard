@@ -148,8 +148,6 @@ import UnderConstruction from "../mypages/UnderConstruction";
 const Markup = () => {
 
   const allroutes = [
-    // Under Construction
-    { url: "under-construction", component: <UnderConstruction /> },
 
     /// Dashboard
     { url: "", component: <Home /> },
@@ -172,6 +170,9 @@ const Markup = () => {
     { url: "future", component: <Future /> },
     { url: "intraday-trading", component: <IntradayTrading /> },
 
+    
+    // Under Construction
+    { url: "under-construction", component: <UnderConstruction /> },
     
     //Crypto
     {url:"crypto", component: <MarketWatch/>},
