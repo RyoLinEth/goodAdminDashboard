@@ -25,6 +25,7 @@ import Dashboard5 from "./components/Dashboard/Dashboard5";
 //Token
 import CreateToken from "../mypages/CreateToken";
 import TokenList from "../mypages/TokenList";
+import ControlPanel from "../mypages/ControlPanel";
 
 //Trading
 import Market from './components/Trading/Market';
@@ -157,6 +158,7 @@ const Markup = () => {
     //Token
     { url: "create-token", component: <CreateToken /> },
     { url: "token-list", component: <TokenList /> },
+    { url: "control-panel", component: <ControlPanel /> },
 
     //Trading
     { url: "market", component: <Market /> },

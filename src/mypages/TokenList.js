@@ -70,7 +70,8 @@ const TokenList = () => {
 
     return (
         <>
-            <div className="row" style={{ paddingTop: '50px' }}>
+            <div className="row">
+                <h1> My Token List </h1>
                 <div className="col-12">
                     <div className="card">
                         <Tab.Container defaultActiveKey="All">

@@ -3,16 +3,6 @@ import { Dropdown, Tab, Nav } from 'react-bootstrap';
 
 import './CreateToken.css'
 
-const tabDataBlog = [
-    { Name: "Tiger Nixon", Trade: "System Architect", Side: "Edinburgh", Number: "61", Date: "2022/04/25", Amount: "$320,800" },
-    { Name: "Ashton Cox", Trade: "Junior Technical Author", Side: "San Francisco", Number: "66", Date: "2022/01/12", Amount: "$86,000" },
-    { Name: "Brielle Williamson", Trade: "Integration Specialist", Side: "New York", Number: "71", Date: "2022/12/02", Amount: "$372,000" },
-    { Name: "Cedric Kelly", Trade: "Senior Developer", Side: "Edinburgh", Number: "75", Date: "2022/05/29", Amount: "$433,060" },
-    { Name: "Garrett Winters", Trade: "Accountant", Side: "Tokyo", Number: "63", Date: "2022/07/25", Amount: "$170,750" },
-    { Name: "Tiger Nixon", Trade: "System Architect", Side: "Edinburgh", Number: "36", Date: "2022/12/25", Amount: "$170,750" },
-];
-
-
 const CreateToken = () => {
     const [data, setData] = useState(
         document.querySelectorAll("#future_wrapper tbody tr")

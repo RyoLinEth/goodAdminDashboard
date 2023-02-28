@@ -1,11 +1,12 @@
 export const MenuList = [
     //Dashboard
     {
-        title: 'Dashboard',	
-        classsChange: 'mm-collapse',		
+        title: 'Dashboard',
+        classsChange: 'mm-collapse',
         iconStyle: <i className="material-icons">grid_view</i>,
+        to: 'dashboard'
         // content: [
-            
+
         //     {
         //         title: 'Dashboard Light',
         //         to: 'dashboard',					
@@ -21,28 +22,28 @@ export const MenuList = [
         //     // {
         //     //     title: 'Dashboard-3',
         //     //     to: 'index-3',
-                
+
 
         //     // },
         //     // {
         //     //     title: 'Dashboard-4',
         //     //     to: 'index-4',
-                
+
         //     // },
-		// 	// {
+        // 	// {
         //     //     title: 'Dashboard-5',
         //     //     to: 'index-5',
-                
+
         //     // },
-            
-            
+
+
         // ],
     },
     //Trading
     {
         title: 'Token',
         classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">trending_up</i>,
+        iconStyle: <i className="material-icons">currency_exchange</i>,
         content: [
             {
                 title: 'Create Token',
@@ -52,6 +53,10 @@ export const MenuList = [
                 title: 'My Token List',
                 to: 'token-list',
             },
+            {
+                title: 'Control Panel',
+                to: 'control-panel',
+            },
             // {
             //     title: 'P2P',
             //     to: 'p2p',
@@ -60,7 +65,7 @@ export const MenuList = [
             //     title: 'Future',
             //     to: 'future',
             // }, 
-			// {
+            // {
             //     title: 'Intraday Trading',
             //     to: 'intraday-trading',
             // },
@@ -86,14 +91,14 @@ export const MenuList = [
             {
                 title: 'Future',
                 to: 'future',
-            }, 
-			{
+            },
+            {
                 title: 'Intraday Trading',
                 to: 'intraday-trading',
             },
         ]
     },
-	//Crypto
+    //Crypto
     {
         title: 'Crypto',
         classsChange: 'mm-collapse',
@@ -114,8 +119,8 @@ export const MenuList = [
             {
                 title: 'Exchange',
                 to: 'exchange',
-            }, 
-			{
+            },
+            {
                 title: 'Banking',
                 to: 'banking',
             },
@@ -128,35 +133,35 @@ export const MenuList = [
         iconStyle: <i className="material-icons">description</i>,
         content: [
             {
-                title:'History',
+                title: 'History',
                 to: 'history'
             },
             {
-                title:'Orders',
+                title: 'Orders',
                 to: 'orders'
             },
             {
-                title:'Report',
+                title: 'Report',
                 to: 'reports'
             },
-			{
-                title:'User',
+            {
+                title: 'User',
                 to: 'user'
             },
-			{
-                title:'Contacts',
+            {
+                title: 'Contacts',
                 to: 'contact'
             },
-			{
-                title:'Activity',
+            {
+                title: 'Activity',
                 to: 'activity'
             },
         ],
     },
-    
+
     //Apps
     {
-        title: 'Apps',	
+        title: 'Apps',
         classsChange: 'mm-collapse',
         iconStyle: <i className="material-icons"> app_registration </i>,
         content: [
@@ -175,7 +180,7 @@ export const MenuList = [
             {
                 title: 'Email',
                 //to: './',
-                hasMenu : true,
+                hasMenu: true,
                 content: [
                     {
                         title: 'Compose',
@@ -192,13 +197,13 @@ export const MenuList = [
                 ],
             },
             {
-                title:'Calendar',
+                title: 'Calendar',
                 to: 'app-calender'
             },
             {
                 title: 'Shop',
                 //to: './',
-                hasMenu : true,
+                hasMenu: true,
                 content: [
                     {
                         title: 'Product Grid',
@@ -234,109 +239,109 @@ export const MenuList = [
     },
     //Charts
     {
-        title: 'Charts',	
+        title: 'Charts',
         classsChange: 'mm-collapse',
         iconStyle: <i className="material-icons"> assessment </i>,
         content: [
-            
+
             {
                 title: 'RechartJs',
-                to: 'chart-rechart',					
+                to: 'chart-rechart',
             },
             {
                 title: 'Chartjs',
-                to: 'chart-chartjs',					
+                to: 'chart-chartjs',
             },
             {
                 title: 'Sparkline',
-                to: 'chart-sparkline',					
+                to: 'chart-sparkline',
             },
             {
                 title: 'Apexchart',
-                to: 'chart-apexchart',					
+                to: 'chart-apexchart',
             },
         ]
     },
     //Boosttrap
     {
-        title: 'Bootstrap',	
+        title: 'Bootstrap',
         classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons"> favorite </i>,	
+        iconStyle: <i className="material-icons"> favorite </i>,
         content: [
             {
                 title: 'Accordion',
-                to: 'ui-accordion',					
+                to: 'ui-accordion',
             },
             {
                 title: 'Alert',
-                to: 'ui-alert',					
+                to: 'ui-alert',
             },
             {
                 title: 'Badge',
-                to: 'ui-badge',					
+                to: 'ui-badge',
             },
             {
                 title: 'Button',
-                to: 'ui-button',					
+                to: 'ui-button',
             },
             {
                 title: 'Modal',
-                to: 'ui-modal',					
+                to: 'ui-modal',
             },
             {
                 title: 'Button Group',
-                to: 'ui-button-group',					
+                to: 'ui-button-group',
             },
             {
                 title: 'List Group',
-                to: 'ui-list-group',					
+                to: 'ui-list-group',
             },
             {
                 title: 'Cards',
-                to: 'ui-card',					
+                to: 'ui-card',
             },
             {
                 title: 'Carousel',
-                to: 'ui-carousel',					
+                to: 'ui-carousel',
             },
             {
                 title: 'Dropdown',
-                to: 'ui-dropdown',					
+                to: 'ui-dropdown',
             },
             {
                 title: 'Popover',
-                to: 'ui-popover',					
+                to: 'ui-popover',
             },
             {
                 title: 'Progressbar',
-                to: 'ui-progressbar',					
+                to: 'ui-progressbar',
             },
             {
                 title: 'Tab',
-                to: 'ui-tab',					
+                to: 'ui-tab',
             },
             {
                 title: 'Typography',
-                to: 'ui-typography',					
+                to: 'ui-typography',
             },
             {
                 title: 'Pagination',
-                to: 'ui-pagination',					
+                to: 'ui-pagination',
             },
             {
                 title: 'Grid',
-                to: 'ui-grid',					
+                to: 'ui-grid',
             },
         ]
     },
     //plugins
     {
-        title:'Plugins',
+        title: 'Plugins',
         classsChange: 'mm-collapse',
-        iconStyle : <i className="material-icons"> extension </i>,
-        content : [
+        iconStyle: <i className="material-icons"> extension </i>,
+        content: [
             {
-                title:'Select 2',
+                title: 'Select 2',
                 to: 'uc-select2',
             },
             // {
@@ -344,54 +349,54 @@ export const MenuList = [
             //     to: 'uc-noui-slider',
             // },
             {
-                title:'Sweet Alert',
+                title: 'Sweet Alert',
                 to: 'uc-sweetalert',
             },
             {
-                title:'Toastr',
+                title: 'Toastr',
                 to: 'uc-toastr',
             },
             {
-                title:'Jqv Map',
+                title: 'Jqv Map',
                 to: 'map-jqvmap',
             },
             {
-                title:'Light Gallery',
+                title: 'Light Gallery',
                 to: 'uc-lightgallery',
             },
         ]
     },
     //Widget
-    {   
-        title:'Widget',
+    {
+        title: 'Widget',
         //classsChange: 'mm-collapse',
         iconStyle: <i className="bi bi-gear-wide"></i>,
         to: 'widget-basic',
     },
     //Forms
     {
-        title:'Forms',
+        title: 'Forms',
         classsChange: 'mm-collapse',
         iconStyle: <i className="material-icons"> insert_drive_file </i>,
-        content : [
+        content: [
             {
-                title:'Form Elements',
+                title: 'Form Elements',
                 to: 'form-element',
             },
             {
-                title:'Wizard',
+                title: 'Wizard',
                 to: 'form-wizard',
             },
             {
-                title:'CkEditor',
+                title: 'CkEditor',
                 to: 'form-ckeditor',
             },
             {
-                title:'Pickers',
+                title: 'Pickers',
                 to: 'form-pickers',
             },
             {
-                title:'Form Validate',
+                title: 'Form Validate',
                 to: 'form-validation',
             },
 
@@ -399,64 +404,64 @@ export const MenuList = [
     },
     //Table
     {
-        title:'Table',
+        title: 'Table',
         classsChange: 'mm-collapse',
         iconStyle: <i className="material-icons"> table_chart </i>,
-        content : [
+        content: [
             {
-                title:'Table Filtering',
+                title: 'Table Filtering',
                 to: 'table-filtering',
             },
             {
-                title:'Table Sorting',
+                title: 'Table Sorting',
                 to: 'table-sorting',
             },
             {
-                title:'Bootstrap',
+                title: 'Bootstrap',
                 to: 'table-bootstrap-basic',
             },
-           
+
 
         ]
     },
     //Pages
     {
-        title:'Pages',
+        title: 'Pages',
         classsChange: 'mm-collapse',
         iconStyle: <i className="material-icons">article</i>,
-        content : [
+        content: [
             {
-                title:'Error',
-                hasMenu : true,
-                content : [
+                title: 'Error',
+                hasMenu: true,
+                content: [
                     {
                         title: 'Error 400',
-                        to : 'page-error-400',
+                        to: 'page-error-400',
                     },
                     {
                         title: 'Error 403',
-                        to : 'page-error-403',
+                        to: 'page-error-403',
                     },
                     {
                         title: 'Error 404',
-                        to : 'page-error-404',
+                        to: 'page-error-404',
                     },
                     {
                         title: 'Error 500',
-                        to : 'page-error-500',
+                        to: 'page-error-500',
                     },
                     {
                         title: 'Error 503',
-                        to : 'page-error-503',
+                        to: 'page-error-503',
                     },
                 ],
             },
             {
-                title:'Lock Screen',
+                title: 'Lock Screen',
                 to: 'page-lock-screen',
             },
 
         ]
     },
-    
+
 ]

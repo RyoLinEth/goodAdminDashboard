@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 //import {NavLink} from 'react-router-dom';
 import loadable from "@loadable/component";
 import pMinDelay from "p-min-delay";
+import swal from "sweetalert";
 import { Dropdown, Nav, Tab } from 'react-bootstrap';
 
 //Import Components
@@ -13,10 +14,6 @@ import OrderForm from './Dashboard/OrderForm';
 //import ServerStatusBar from './Dashboard/ServerStatusBar';
 import { LtcIcon, BtcIcon, XtzIcon, EthIcon } from './SvgIcon';
 
-//images
-import coin from './../../../images/MyCoin.png';
-// import coin from './../../../images/coin.png';
-import metaverse from './../../../images/metaverse.png';
 
 
 const DashboardComboChart = loadable(() =>
@@ -63,8 +60,9 @@ const listData = [
 ];
 
 const Home = () => {
-
 	const { changeBackground } = useContext(ThemeContext);
+	const [isPlatFormToken, setIsPlatFormToken] = useState(false);
+
 	useEffect(() => {
 		changeBackground({ value: "light", label: "Light" });
 	}, []);
@@ -128,6 +126,48 @@ const Home = () => {
 					</div>
 				</div>
 
+				<div className="col-12">
+					<div className="card">
+						<div className="card-header">
+							<h4 className="card-title">Platform token?</h4>
+						</div>
+						<div className="card-body">
+							<div className="basic-form">
+								<form
+									className="d-flex align-items-center flex-wrap justify-content-center"
+									onSubmit={(e) => {
+										e.preventDefault()
+
+										let caValue = document.getElementById('contractAddress').value
+										console.log(caValue)
+										document.getElementById('contractAddress').value = null
+										if (caValue.length != 42)
+											swal("Wrong!!",`${caValue} is not a contract deployed by our platform`, "error")
+										else
+											swal("You're right!!", `${caValue} is a contract deployed by our platform`, "success")
+									}}
+								>
+									<div className="mb-3 mb-2">
+										<label className="sr-only">Contract Address</label>
+										<input type="text" readOnly className="form-control-plaintext" value="Contract Address" />
+									</div>
+									<div className="mb-2 mx-sm-3">
+										<label className="sr-only">Contract Address</label>
+										<input
+											type="text"
+											className="form-control"
+											placeholder="Contract Address"
+											id="contractAddress"
+										/>
+									</div>
+									<button type="submit" className="btn btn-primary mb-2">
+										Check
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 				{/*
 					Swap Function
 				*/}
