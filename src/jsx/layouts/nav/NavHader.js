@@ -41,7 +41,9 @@ const NavHader = () => {
   }, []);
 
   return (
-    <div className={`header ${headerFix ? "is-fixed" : ""}`}>
+    <div
+      className={`header ${headerFix ? "is-fixed" : ""}`}
+    >
       <div className="nav-header">
         <Link to="/dashboard" className="brand-logo">
           <img src={logo1} className="logo-abbr" alt="" />
