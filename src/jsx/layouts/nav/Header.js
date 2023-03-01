@@ -131,7 +131,7 @@ const Header = ({ onNote }) => {
 										</Dropdown.Menu>
 									</Dropdown>
 								</div>
-								<div className="sidebar-social-link ">
+								{/* <div className="sidebar-social-link ">
 									<ul className="">
 										<Dropdown as="li" className="nav-item dropdown notification_dropdown ">
 											<Dropdown.Toggle variant="" as="a" className="nav-link  ai-icon i-false c-pointer" role="button">
@@ -277,7 +277,7 @@ const Header = ({ onNote }) => {
 											</Dropdown.Menu>
 										</Dropdown>
 									</ul>
-								</div>
+								</div> */}
 
 								<ul>
 									<Dropdown as="li" className="nav-item dropdown header-profile">

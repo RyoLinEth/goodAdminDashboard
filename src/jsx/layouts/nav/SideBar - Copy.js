@@ -32,6 +32,13 @@ class MM extends Component {
   }
 }
 
+export function NavMenuToggle() {
+  setTimeout(() => {
+    let mainwrapper = document.querySelector("#main-wrapper");
+    mainwrapper.classList.add("menu-toggle");
+  }, 200);
+}
+
 const SideBar = () => {
 	const {
 		iconHover,

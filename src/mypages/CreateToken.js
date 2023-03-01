@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Dropdown, Tab, Nav } from 'react-bootstrap';
+import swal from 'sweetalert';
 
 import './CreateToken.css'
 
@@ -96,6 +97,7 @@ const CreateToken = () => {
             mustFill: true,
             function: (e) => setName(e.target.value),
             type: "text",
+            defaultValue: name,
         },
         {
             text: 'Symbol',
@@ -103,6 +105,7 @@ const CreateToken = () => {
             mustFill: true,
             function: (e) => setSymbol(e.target.value),
             type: "text",
+            defaultValue: symbol,
         },
         {
             text: 'Supply',
@@ -110,15 +113,27 @@ const CreateToken = () => {
             mustFill: true,
             function: (e) => setSupply(e.target.value),
             type: "number",
-            step: (1),
+            defaultValue: supply,
         },
         {
             text: 'Decimal',
             placeholder: 'Number between 0 and 18',
             mustFill: true,
-            function: (e) => setDecimal(e.target.value),
+            function: (e) => {
+                if (e.target.value > 18) {
+                    swal("Wrong", "You can not set decimal higher than 18", "error")
+                    setDecimal(18)
+                    return;
+                }
+                if (e.target.value < 0) {
+                    swal("Wrong", "You can not set decimal lower than 0", "error")
+                    setDecimal(0)
+                    return;
+                }
+                setDecimal(e.target.value)
+            },
             type: "number",
-            step: (1),
+            defaultValue: decimal,
         },
     ]
     const advancedDatas = [
@@ -127,6 +142,7 @@ const CreateToken = () => {
             placeholder: 'Ex: 0x000000000000000000000000000000000000dEaD',
             mustFill: true,
             function: (e) => setMarketingWallet(e.target.value),
+            defaultValue: marketingWallet,
         },
     ]
 
@@ -196,24 +212,28 @@ const CreateToken = () => {
             placeholder: 'Ex: 0',
             mustFill: true,
             function: (e) => setBuyMarketing(e.target.value),
+            defaultValue: buyMarketing,
         },
         {
             text: 'Buy Liquidity Fee',
             placeholder: 'Ex: 0',
             mustFill: true,
             function: (e) => setBuyLiquidity(e.target.value),
+            defaultValue: buyLiquidity,
         },
         {
             text: 'Buy Burn Fee',
             placeholder: 'Ex: 0',
             mustFill: true,
             function: (e) => setBuyBurn(e.target.value),
+            defaultValue: buyBurn,
         },
         {
             text: 'Buy Reward Fee',
             placeholder: 'Ex: 0',
             mustFill: true,
             function: (e) => setBuyReward(e.target.value),
+            defaultValue: buyReward,
         },
     ]
     const SellTaxes = [
@@ -222,24 +242,28 @@ const CreateToken = () => {
             placeholder: 'Ex: 0',
             mustFill: true,
             function: (e) => setSellMarketing(e.target.value),
+            defaultValue: sellMarketing,
         },
         {
             text: 'Sell Liquidity Fee',
             placeholder: 'Ex: 0',
             mustFill: true,
             function: (e) => setSellLiquidity(e.target.value),
+            defaultValue: sellLiquidity,
         },
         {
             text: 'Sell Burn Fee',
             placeholder: 'Ex: 0',
             mustFill: true,
             function: (e) => setSellBurn(e.target.value),
+            defaultValue: sellBurn,
         },
         {
             text: 'Sell Reward Fee',
             placeholder: 'Ex: 0',
             mustFill: true,
             function: (e) => setSellReward(e.target.value),
+            defaultValue: sellReward,
         },
     ]
 
@@ -438,6 +462,7 @@ const CreateToken = () => {
                                                             type={data.type}
                                                             className="form-control"
                                                             placeholder={data.placeholder}
+                                                            defaultValue={data.defaultValue}
                                                             onChange={data.function}
                                                         />
                                                     </div>
@@ -483,7 +508,12 @@ const CreateToken = () => {
                                                         </span>
 
                                                         <div className='col-8'>
-                                                            <input type="text" className="form-control" placeholder={data.placeholder} />
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder={data.placeholder}
+                                                                defaultValue={data.defaultValue}
+                                                                onChange={data.function} />
                                                         </div>
                                                     </div>
                                                 )
@@ -582,9 +612,10 @@ const CreateToken = () => {
 
                                                                 <div className='col-8'>
                                                                     <input
-                                                                        type="text"
+                                                                        type="number"
                                                                         className="form-control"
                                                                         placeholder={data.placeholder}
+                                                                        defaultValue={data.defaultValue}
                                                                         onChange={data.function} />
                                                                 </div>
                                                             </div>
@@ -659,6 +690,7 @@ const CreateToken = () => {
                                                                         type="text"
                                                                         className="form-control"
                                                                         placeholder={data.placeholder}
+                                                                        defaultValue={data.defaultValue}
                                                                         onChange={data.function} />
                                                                 </div>
                                                             </div>

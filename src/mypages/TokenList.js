@@ -77,13 +77,13 @@ const TokenList = () => {
                         <Tab.Container defaultActiveKey="All">
                             <div className="card-header border-0 pb-2 flex-wrap">
                                 <h4 className="heading">My Token List</h4>
-                                <>
+                                {/* <>
                                     <Nav className="order nav nav-tabs">
                                         <Nav.Link as="button" eventKey="All" type="button">Order</Nav.Link>
                                         <Nav.Link as="button" eventKey="Order" type="button">Order History</Nav.Link>
                                         <Nav.Link as="button" eventKey="Trade" type="button">Trade Histroy</Nav.Link>
                                     </Nav>
-                                </>
+                                </> */}
                             </div>
                             <div className="card-body pt-0 pb-0">
                                 <Tab.Content >

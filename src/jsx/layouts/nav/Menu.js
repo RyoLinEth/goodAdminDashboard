@@ -5,39 +5,6 @@ export const MenuList = [
         classsChange: 'mm-collapse',
         iconStyle: <i className="material-icons">grid_view</i>,
         to: 'dashboard'
-        // content: [
-
-        //     {
-        //         title: 'Dashboard Light',
-        //         to: 'dashboard',					
-        //     },
-        //     // {
-        //     //     title: 'Dashboard Dark',
-        //     //     to: 'dashboard-dark',
-        //     // },
-        //     // {
-        //     //     title: 'Dashboard-2',
-        //     //     to: 'index-1',
-        //     // },
-        //     // {
-        //     //     title: 'Dashboard-3',
-        //     //     to: 'index-3',
-
-
-        //     // },
-        //     // {
-        //     //     title: 'Dashboard-4',
-        //     //     to: 'index-4',
-
-        //     // },
-        // 	// {
-        //     //     title: 'Dashboard-5',
-        //     //     to: 'index-5',
-
-        //     // },
-
-
-        // ],
     },
     //Token
     {

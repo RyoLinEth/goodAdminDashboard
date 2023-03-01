@@ -390,13 +390,9 @@ const ControlPanel = () => {
                     </div>
                 </div>
             </div>
-
-            <Modal className="fade" show={modalWithTooltip}>
-                {
-                    console.log(modifying)
-                }
+            <Modal className="fade margin-top-40" show={modalWithTooltip}>
                 <Modal.Header>
-                    <Modal.Title>Setting {modifying[2]}</Modal.Title>
+                    <Modal.Title>Set {modifying[2]}</Modal.Title>
                     <Button
                         variant=""
                         className="btn-close"
@@ -421,7 +417,14 @@ const ControlPanel = () => {
                     >
                         Close
                     </Button>
-                    <Button variant="primary">Confirm</Button>
+                    <Button
+                        variant="primary"
+                        onClick={() => {
+                            setModalWithTooltip(false)
+                        }}
+                    >
+                        Confirm
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </div >

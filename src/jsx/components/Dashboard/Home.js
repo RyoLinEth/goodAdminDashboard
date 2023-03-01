@@ -83,7 +83,7 @@ const Home = () => {
 												Visulize Web3 Transactions.
 											</p>
 											{/* <p>Send Tokens Via Website</p> */}
-											<Link to={"/exchange"} className="btn btn-primary">Create Token</Link>
+											<Link to={"/create-token"} className="btn btn-primary">Create Token</Link>
 										</div>
 									</div>
 								</div>
@@ -147,10 +147,10 @@ const Home = () => {
 											swal("You're right!!", `${caValue} is a contract deployed by our platform`, "success")
 									}}
 								>
-									<div className="mb-3 mb-2">
+									{/* <div className="mb-3 mb-2">
 										<label className="sr-only">Contract Address</label>
 										<input type="text" readOnly className="form-control-plaintext" value="Contract Address" />
-									</div>
+									</div> */}
 									<div className="mb-2 mx-sm-3">
 										<label className="sr-only">Contract Address</label>
 										<input
