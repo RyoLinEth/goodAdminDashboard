@@ -1,75 +1,148 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
-//import {NavLink} from 'react-router-dom';
-import loadable from "@loadable/component";
-import pMinDelay from "p-min-delay";
 import swal from "sweetalert";
-import { Dropdown, Nav, Tab } from 'react-bootstrap';
+import { Carousel, Col, Card } from 'react-bootstrap';
 
 //Import Components
 import { ThemeContext } from "../../../context/ThemeContext";
-import BalanceCardSlider from './Dashboard/BalanceCardSlider';
-//import MorrisDonught from './Dashboard/MorrisDonught';
-import OrderForm from './Dashboard/OrderForm';
-//import ServerStatusBar from './Dashboard/ServerStatusBar';
 import { LtcIcon, BtcIcon, XtzIcon, EthIcon } from './SvgIcon';
 
+import img5 from '../../../images/banner/Banner01.png'
+import img6 from '../../../images/banner/Banner02.png'
+import img7 from '../../../images/banner/Banner03.png'
 
-
-const DashboardComboChart = loadable(() =>
-	pMinDelay(import("./Dashboard/DashboardComboChart"), 1000)
-);
-const AssetsChart = loadable(() =>
-	pMinDelay(import("./Dashboard/AssetsChart"), 1000)
-);
-
-const ServerStatusBar = loadable(() =>
-	pMinDelay(import("./Dashboard/ServerStatusBar"), 1000)
-);
-
-
-const pickerData = [
-	{ fillcolor: 'var(--primary)', datatitle: 'XTZ(40%)', price: '763' },
-	{ fillcolor: '#2A353A', datatitle: 'BTC(20%)', price: '321' },
-	{ fillcolor: '#C0E192', datatitle: 'BNB(10%)', price: '69' },
-	{ fillcolor: '#E085E4', datatitle: 'ETH(10%)', price: '154' },
-];
-
-
-const marketBlog = [
-	{ icon: LtcIcon, classBg: 'bg-success', Name: 'LTC', },
-	{ icon: BtcIcon, classBg: 'bg-warning', Name: 'BTC', },
-	{ icon: XtzIcon, classBg: 'bg-primary', Name: 'XTZ', },
-	{ icon: EthIcon, classBg: 'bg-pink', Name: 'ETH', },
-	{ icon: XtzIcon, classBg: 'bg-primary', Name: 'XTZ', },
-];
-
-const tooksList = [
-	{ icon: LtcIcon, classBg: 'bg-success', Name: 'Create Token', to: '../create-token' },
-	{ icon: BtcIcon, classBg: 'bg-warning', Name: 'My Token List', to: '../token-list', },
-	{ icon: XtzIcon, classBg: 'bg-primary', Name: 'Batch Tool', },
-	{ icon: EthIcon, classBg: 'bg-pink', Name: 'Send Tokens Via Webpage', },
-	// { icon: XtzIcon, classBg: 'bg-primary', Name: 'XTZ', },
-];
-
-const listData = [
-	{}, {}, {},
-	{}, {}, {},
-	{}, {}, {},
-	{}, {},
-];
+export const englishContent = {
+	title: "Web3 Tools",
+	content1:
+		'The Best Web3 Tool Website',
+	content2:
+		'Visulize Web3 Experience.',
+	tooltitle:
+		'Our Tool',
+	toolcontent1:
+		'Create Token',
+	toolcontent2:
+		'My Token List',
+	toolcontent3:
+		'Batch Tool',
+	toolcontent4:
+		'Create NFT',
+	platformtitle:
+		'Platform token or not',
+	platformplaceholder:
+		'Contract Address',
+	check:
+		'Check',
+}
+export const chineseContent = {
+	title: "Web3 工具",
+	content1:
+		'最好的 Web3 工具网站',
+	content2:
+		'视觉化您的 Web3 体验',
+	tooltitle:
+		'工具列表',
+	toolcontent1:
+		'创建代币',
+	toolcontent2:
+		'我的代币列表',
+	toolcontent3:
+		'批量工具',
+	toolcontent4:
+		'创建NFT',
+	platformtitle:
+		'查询是否为平台代币',
+	platformplaceholder:
+		'合约地址',
+	check:
+		'检查',
+}
+export const traditionalchineseContent = {
+	title: "Web3 工具",
+	content1:
+		'最好的 Web3 工具網站',
+	content2:
+		'視覺化您的 Web3 體驗',
+	tooltitle:
+		'工具列表',
+	toolcontent1:
+		'創建代幣',
+	toolcontent2:
+		'我的代幣列表',
+	toolcontent3:
+		'批量工具',
+	toolcontent4:
+		'創建NFT',
+	platformtitle:
+		'查詢是否為平台代幣',
+	platformplaceholder:
+		'合約地址',
+	check:
+		'檢查',
+}
 
 const Home = () => {
-	const { changeBackground } = useContext(ThemeContext);
+	const { changeBackground, language } = useContext(ThemeContext);
 	const [isPlatFormToken, setIsPlatFormToken] = useState(false);
+	const [content, setContent] = useState(englishContent);
 
 	useEffect(() => {
 		changeBackground({ value: "light", label: "Light" });
 	}, []);
 
+	useEffect(() => {
+		switch (language.value) {
+			case "english":
+				setContent(englishContent)
+				break;
+			case "chinese":
+				setContent(chineseContent)
+				break;
+			case "traditionalchinese":
+				setContent(traditionalchineseContent)
+				break;
+			default:
+				setContent(englishContent)
+		}
+	}, [language.value])
+
+	const tooksList = [
+		{ icon: LtcIcon, classBg: 'bg-success', Name: content.toolcontent1, to: '../create-token' },
+		{ icon: BtcIcon, classBg: 'bg-warning', Name: content.toolcontent2, to: '../token-list', },
+		{ icon: XtzIcon, classBg: 'bg-primary', Name: content.toolcontent3, },
+		{ icon: EthIcon, classBg: 'bg-pink', Name: content.toolcontent4, },
+		// { icon: XtzIcon, classBg: 'bg-primary', Name: 'XTZ', },
+	];
+
+	const carousel5 = [
+		{ img: img5, text: 'The Best Web3 Tool Platform' },
+		{ img: img6, text: 'Token, NFT Deployed By One Click' },
+		{ img: img7, text: 'Have Fun' },
+	]
+
 	return (
 		<>
 			<div className="row">
+				<Col xl={12}>
+					<Card xl={8}>
+						<Card.Body style={{ display: 'flex', justifyContent: 'center' }}>
+							<Carousel>
+								{carousel5.map((carousel, i) => (
+									<Carousel.Item key={i}>
+										<img
+											className='d-block'
+											src={carousel.img}
+											alt={`${carousel.text} slide`}
+											style={{
+												maxWidth: '90vw'
+											}}
+										/>
+									</Carousel.Item>
+								))}
+							</Carousel>
+						</Card.Body>
+					</Card>
+				</Col>
 				<div className="col-xl-12">
 					<div className="row">
 						<div className="col-xl-12">
@@ -77,10 +150,10 @@ const Home = () => {
 								<div className="card-body">
 									<div className="buy-coin  bubles-down col-12">
 										<div className='col-12' style={{ paddingLeft: '20px' }}>
-											<h2>Web 3 Tools</h2>
+											<h2>{content.title}</h2>
 											<p style={{ paddingLeft: '20px' }}>
-												The Best Web3 Tool Website.<br />
-												Visulize Web3 Transactions.
+												{content.content1}<br />
+												{content.content2}
 											</p>
 											{/* <p>Send Tokens Via Website</p> */}
 											<Link to={"/create-token"} className="btn btn-primary">Create Token</Link>
@@ -91,14 +164,11 @@ const Home = () => {
 						</div>
 					</div>
 				</div>
-				{/* <div className="col-xl-12">
-							<BalanceCardSlider />
-						</div> */}
 				<div className="col-12">
 					<div className="card col-12">
 						<div className="card-header border-0 pb-0">
 							<div>
-								<h2 className="heading">Our Tools</h2>
+								<h2 className="heading">{content.tooltitle}</h2>
 							</div>
 						</div>
 						<div className="card-body pt-0 px-0">
@@ -129,7 +199,7 @@ const Home = () => {
 				<div className="col-12">
 					<div className="card">
 						<div className="card-header">
-							<h4 className="card-title">Platform token?</h4>
+							<h4 className="card-title">{content.platformtitle}</h4>
 						</div>
 						<div className="card-body">
 							<div className="basic-form">
@@ -142,26 +212,22 @@ const Home = () => {
 										console.log(caValue)
 										document.getElementById('contractAddress').value = null
 										if (caValue.length != 42)
-											swal("Wrong!!",`${caValue} is not a contract deployed by our platform`, "error")
+											swal("Wrong!!", `${caValue} is not a contract deployed by our platform`, "error")
 										else
 											swal("You're right!!", `${caValue} is a contract deployed by our platform`, "success")
 									}}
 								>
-									{/* <div className="mb-3 mb-2">
-										<label className="sr-only">Contract Address</label>
-										<input type="text" readOnly className="form-control-plaintext" value="Contract Address" />
-									</div> */}
 									<div className="mb-2 mx-sm-3">
 										<label className="sr-only">Contract Address</label>
 										<input
 											type="text"
 											className="form-control"
-											placeholder="Contract Address"
+											placeholder={content.platformplaceholder}
 											id="contractAddress"
 										/>
 									</div>
 									<button type="submit" className="btn btn-primary mb-2">
-										Check
+										{content.check}
 									</button>
 								</form>
 							</div>

@@ -50,9 +50,7 @@ const NavHader = () => {
         <div
           className="nav-control"
           onClick={() => {
-            console.log("In nav Header")
             setToggle(!toggle);
-            //openMenuToggle();
             NavMenuToggle();
           }}
         >
