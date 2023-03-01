@@ -9,8 +9,6 @@ import logotext1 from './../../../images/logo/logo-text.png';
 import logoColor from './../../../images/logo/logo-color.png';
 import logoColorText from './../../../images/logo/logo-text-color.png';
 
-import WalletConnector from '../../../mypages/WallectConnector'
-
 export function NavMenuToggle() {
   setTimeout(() => {
     let mainwrapper = document.querySelector("#main-wrapper");
@@ -22,9 +20,6 @@ export function NavMenuToggle() {
   }, 200);
 }
 
-const handleDefaultAccountChange = (value) => {
-  console.log(value)
-}
 
 const NavHader = () => {
   const [toggle, setToggle] = useState(false);
@@ -77,9 +72,6 @@ const NavHader = () => {
               <rect y="22" width="4" height="4" rx="2" fill="#2A353A" />
             </svg>
           </div>
-          {/* <div style={{ position: 'fixed', top:'20px', right:'20px' }}>
-          <WalletConnector defaultAccountChange={handleDefaultAccountChange} />
-        </div> */}
         </div>
       </div>
     </div>

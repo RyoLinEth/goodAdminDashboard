@@ -1,31 +1,51 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { ethers } from 'ethers'
 import swal from 'sweetalert'
+import { ThemeContext } from '../context/ThemeContext'
 
-const WalletConnect = ({ defaultAccountChange, language }) => {
+export const LANGUAGETEXT = {
+    english: {
+        connect: "Connect Wallet",
+        warnText: [
+            'Error', 'Need to install an injected Web3 Wallet'
+        ]
+    },
+    chinese: {
+        connect: "连接钱包",
+        warnText: [
+            '错误', '请安装一个Web3钱包'
+        ]
+    },
+    traditionalchinese: {
+        connect: "連接錢包",
+        warnText: [
+            '錯誤', '請安裝一個Web3錢包'
+        ]
+    }
+};
+
+
+const WalletConnect = ({ defaultAccountChange }) => {
+    const {
+        language
+    } = useContext(ThemeContext);
+
     const [defaultAccount, setDefaultAccount] = useState(null)
     const [correctNetwork, setCorrectNetwork] = useState(null);
-    const [connectButtonText, setConnectButtonText] = useState("連接錢包")
+    const [connectButtonText, setConnectButtonText] = useState("Connect Wallet")
+    const [warnText, setWarnText] = useState(['Error', 'Need to install an injected Web3 Wallet'])
 
-    const ChineseConnect = "連接錢包"
-    const EnglishConnect = "Connect Wallet"
     const setLanguage = () => {
-        if (language !== "中") {
-            if (connectButtonText === ChineseConnect) {
-                setConnectButtonText(EnglishConnect)
-                return;
-            }
-        }
-        else
-            if (connectButtonText === EnglishConnect) {
-                setConnectButtonText(ChineseConnect)
-                return;
-            }
+        if (defaultAccount !== null) return;
+        const text = LANGUAGETEXT[language.value].connect
+        setConnectButtonText(text)
+        setWarnText(LANGUAGETEXT[language.value].warnText)
     }
 
     useEffect(() => {
         setLanguage()
-    }, [language])
+
+    }, [language.value])
 
     useEffect(() => {
         changingAccount();
@@ -48,30 +68,12 @@ const WalletConnect = ({ defaultAccountChange, language }) => {
                     setConnectButtonText(`${result[0].slice(0, 4)}...${result[0].slice(-4)}`);
                 })
         } else {
-            swal('Error','Need to install MetaMask!','error')
+            swal(`${warnText[0]}`, `${warnText[1]}`, 'error')
         }
     }
 
     const accountChangeHandler = async (newAccount) => {
-        checkCorrectNetwork();
         setDefaultAccount(newAccount);
-    }
-
-    const checkCorrectNetwork = async () => {
-        const { ethereum } = window
-        let chainId = await ethereum.request({ method: 'eth_chainId' })
-        // console.log('Connected to chain:' + chainId)
-
-        // const netWorkID = '0x42'
-        const netWorkID = '0x38'
-
-        if (chainId !== netWorkID) {
-            // setCorrectNetwork(network => network = false)
-            setCorrectNetwork(false)
-            swal("Error", "Please Connect to the Correct Network", "error")
-        } else {
-            setCorrectNetwork(true)
-        }
     }
 
     return (

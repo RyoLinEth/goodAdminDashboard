@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import { Link } from 'react-router-dom';
 import { Col, Table, Card, Button, Modal, } from "react-bootstrap";
 import './ControlPanel.css'
@@ -12,6 +13,12 @@ export const CanModify = () => {
 }
 
 const ControlPanel = () => {
+    const {
+        language,
+    } = useContext(ThemeContext);
+
+    let isEnglish = language.value === 'english' ? true : false
+
     const [isOpen, setIsOpen] = useState([true, true, true, true, true])
     const [modalWithTooltip, setModalWithTooltip] = useState(false);
     const [modifying, setModifying] = useState([]);
@@ -19,27 +26,27 @@ const ControlPanel = () => {
     const contractDatas = [
         [
             {
-                title: "Basic Info",
+                title: isEnglish ? "Basic Info" : "基本資訊",
                 bg: "primary",
                 description: 'Basic info of the contract, only marketing wallet can be modified',
             },
             {
-                title: "Contract Address",
+                title: isEnglish ? "Contract Address" : "合約地址",
                 text: "0x000000000000000000000000000000000000dEaD",
                 bg: "primary",
             },
             {
-                title: "Name",
+                title: isEnglish ? "Name" : "代幣全稱",
                 text: "name",
                 bg: "primary",
             },
             {
-                title: "Symbol",
+                title: isEnglish ? "Symbol" : "代幣縮寫",
                 text: "symbol",
                 bg: "primary",
             },
             {
-                title: "Supply",
+                title: isEnglish ? "Supply" : "總供應量",
                 text: "supply",
                 bg: "primary",
             },

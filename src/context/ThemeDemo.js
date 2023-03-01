@@ -13,7 +13,8 @@ export const dezThemeSet = [
 		headerPosition: "fixed",
 		containerLayout: "full",
 		primary: "color_1",
-		direction: direction
+		direction: direction,
+		language: 'english'
 	},
 	{ /* Demo Theme 1 */
 		typography: "poppins",
@@ -28,9 +29,10 @@ export const dezThemeSet = [
 		containerLayout: "full",
 		primary: "color_1",
 		//secondary:"color_10",
-		direction: direction
+		direction: direction,
+		language: 'english'
 	},
-	 { /* Demo Theme 2 */
+	{ /* Demo Theme 2 */
 		typography: "poppins",
 		version: "light",
 		layout: "horizontal",
@@ -43,7 +45,8 @@ export const dezThemeSet = [
 		containerLayout: "wide",
 		primary: "color_2",
 		secondary: "color_1",
-		direction: direction
+		direction: direction,
+		language: 'english'
 	},
 	{
 		/* Demo Theme 3 */
@@ -59,10 +62,11 @@ export const dezThemeSet = [
 		containerLayout: "wide",
 		primary: "color_8",
 		secondary: "color_1",
-		direction: direction
+		direction: direction,
+		language: 'english'
 	},
 	{
-		/* Demo Theme 4 */	
+		/* Demo Theme 4 */
 		typography: "poppins",
 		version: "light",
 		layout: "vertical",
@@ -75,8 +79,9 @@ export const dezThemeSet = [
 		containerLayout: "wide",
 		primary: "color_5",
 		secondary: "color_1",
-		direction: direction
-		
+		direction: direction,
+		language: 'english'
+
 	},
 	{
 		/* Demo Theme 5 */
@@ -92,7 +97,8 @@ export const dezThemeSet = [
 		containerLayout: "wide",
 		primary: "color_11",
 		secondary: "color_1",
-		direction: direction
+		direction: direction,
+		language: 'english'
 	},
 	{
 		/* Demo Theme 6 */
@@ -108,7 +114,8 @@ export const dezThemeSet = [
 		containerLayout: "wide",
 		primary: "color_5",
 		secondary: "color_1",
-		direction: direction
+		direction: direction,
+		language: 'english'
 	},
 	{
 		/* Demo Theme 7 */
@@ -124,7 +131,8 @@ export const dezThemeSet = [
 		containerLayout: "wide",
 		primary: "color_9",
 		secondary: "color_1",
-		direction: direction
+		direction: direction,
+		language: 'english'
 	},
 	{
 		/* Demo Theme 8 */
@@ -140,8 +148,8 @@ export const dezThemeSet = [
 		containerLayout: "wide",
 		primary: "color_10",
 		secondary: "color_1",
-		direction: direction
+		direction: direction,
+		language: 'english'
 	},
-	
+
 ];
-	

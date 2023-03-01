@@ -1,5 +1,6 @@
-import React, { Fragment, useState } from "react";
-
+import React, { Fragment, useState, useContext } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
+import { Dropdown } from "react-bootstrap";
 import SideBar from "./SideBar";
 import NavHader from "./NavHader";
 import Header from "./Header";
@@ -8,28 +9,73 @@ import ChatBox from "../ChatBox";
 import WalletConnect from "../../../mypages/WallectConnector";
 
 
-const handleDefaultAccountChange = (value) => {
-  console.log(value)
-}
-
 const JobieNav = ({ title, onClick: ClickToAddEvent, onClick2, onClick3 }) => {
+
+  const {
+    changeLanguage,
+  } = useContext(ThemeContext);
+
+  const [CN, setCN] = useState(false);
   const [toggle, setToggle] = useState("");
+  const [selectedLanNum, setSelectedLanNum] = useState(null);
   const onClick = (name) => setToggle(toggle === name ? "" : name);
+
+
+  const handleDefaultAccountChange = (value) => {
+    console.log(value)
+  }
+
+  const dropdownLanguages = [
+    {
+      value: 'english',
+      label: 'English',
+      text: 'English',
+    },
+    {
+      value: 'chinese',
+      label: 'Chinese',
+      text: '简体中文',
+    },
+    {
+      value: 'traditionalchinese',
+      label: 'TraditionalChinese',
+      text: '繁體中文',
+    },
+  ]
   return (
     <Fragment>
-
       <NavHader />
       <ChatBox onClick={() => onClick("chatbox")} toggle={toggle} />
-      {/* <Header
-          onNote={() => onClick("chatbox")}
-          onNotification={() => onClick("notification")}
-          onProfile={() => onClick("profile")}
-          toggle={toggle}
-          title={title}
-          onBox={() => onClick("box")}
-          onClick={() => ClickToAddEvent()}
-        />  */}
-      <div style={{ position: 'fixed', top:'20px', right:'20px', zIndex:'9999' }}>
+      <div style={{ position: 'fixed', top: '15px', right: '155px', zIndex: '9999' }}>
+
+        <div className="basic-dropdown">
+          <Dropdown>
+            <Dropdown.Toggle variant="success">
+              {selectedLanNum === null ? "Language" : dropdownLanguages[selectedLanNum].text}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              {
+                dropdownLanguages.map((language, index) => {
+                  return (
+                    <Dropdown.Item
+                      key={index}
+                      onClick={
+                        () => {
+                          changeLanguage({ value: language.value, label: language.label })
+                          setSelectedLanNum(index)
+                        }
+                      }
+                    >
+                      {language.text}
+                    </Dropdown.Item>
+                  )
+                })
+              }
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      </div>
+      <div style={{ position: 'fixed', top: '15px', right: '15px', zIndex: '9999' }}>
         <WalletConnect defaultAccountChange={handleDefaultAccountChange} />
       </div>
       <SideBar />
