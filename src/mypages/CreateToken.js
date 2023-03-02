@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 import { Dropdown, Tab, Nav } from 'react-bootstrap';
 import swal from 'sweetalert';
 
 import './CreateToken.css'
 
 const CreateToken = () => {
-    const [data, setData] = useState(
-        document.querySelectorAll("#future_wrapper tbody tr")
-    );
-    const sort = 6;
-    const activePag = useRef(0);
-    const [test, settest] = useState(0);
+    const {
+        language,
+    } = useContext(ThemeContext);
+
     const [selectedModuleValue, setSelectedModuleValue] = useState(0)
     const [selectedSwapValue, setSelectedSwapValue] = useState(0)
     const [selectedBaseValue, setSelectedBaseValue] = useState(0)
@@ -42,57 +41,14 @@ const CreateToken = () => {
     const [sellReward, setSellReward] = useState(0)
     const [isSellInvalid, setIsSellInvalid] = useState(false)
 
-    // Active data
-    const chageData = (frist, sec) => {
-        for (var i = 0; i < data.length; ++i) {
-            if (i >= frist && i < sec) {
-                data[i].classList.remove("d-none");
-            } else {
-                data[i].classList.add("d-none");
-            }
-        }
-    };
-    // use effect
-    useEffect(() => {
-        setData(document.querySelectorAll("#future_wrapper tbody tr"));
-        //chackboxFun();
-    }, [test]);
-
-
-    // Active pagginarion
-    activePag.current === 0 && chageData(0, sort);
-    // paggination
-    let paggination = Array(Math.ceil(data.length / sort))
-        .fill()
-        .map((_, i) => i + 1);
-
-    // Active paggination & chage data
-    const onClick = (i) => {
-        activePag.current = i;
-        chageData(activePag.current * sort, (activePag.current + 1) * sort);
-        settest(i);
-    };
-
-    const moduleDatas = [
+    const basicDatas = (language) => [
         {
-            text: '0 Tax Basic',
-            description: `This template doens't contains any tax and has the lowest transaction fee`,
-            fee: '0.05 BNB',
-        },
-        {
-            text: 'Market & Liquidity',
-            description: `This template contains marketing and liquidity fee. The liquidity fee would enlarge the liquidity pool, and the marketing fee would make profits to the project owner.`,
-            fee: '0.2 BNB',
-        },
-        {
-            text: 'Reward, Market & Liquidity',
-            description: `This template contains reflection, marketing and liquidity fee. The liquidity fee would enlarge the liquidity pool, the marketing fee would make profits to the project owner, and the reflection fee rewards the holders.`,
-            fee: '0.2 BNB',
-        },
-    ]
-    const basicDatas = [
-        {
-            text: 'Name',
+            text:
+                language === 'english'
+                    ? 'Name'
+                    : language === 'chinese'
+                        ? '代币全称'
+                        : '代幣全稱',
             placeholder: 'Ex: Ethereum',
             mustFill: true,
             function: (e) => setName(e.target.value),
@@ -100,7 +56,12 @@ const CreateToken = () => {
             defaultValue: name,
         },
         {
-            text: 'Symbol',
+            text:
+                language === 'english'
+                    ? 'Symbol'
+                    : language === 'chinese'
+                        ? '代币简称'
+                        : '代幣簡稱',
             placeholder: 'Ex: ETH',
             mustFill: true,
             function: (e) => setSymbol(e.target.value),
@@ -108,7 +69,12 @@ const CreateToken = () => {
             defaultValue: symbol,
         },
         {
-            text: 'Supply',
+            text:
+                language === 'english'
+                    ? 'Supply'
+                    : language === 'chinese'
+                        ? '代币总量'
+                        : '代幣總量',
             placeholder: 'Ex: 1000000',
             mustFill: true,
             function: (e) => setSupply(e.target.value),
@@ -116,8 +82,18 @@ const CreateToken = () => {
             defaultValue: supply,
         },
         {
-            text: 'Decimal',
-            placeholder: 'Number between 0 and 18',
+            text:
+                language === 'english'
+                    ? 'Decimal'
+                    : language === 'chinese'
+                        ? '代币精度'
+                        : '代幣精度',
+            placeholder:
+                language === 'english'
+                    ? 'Number between 0 to 18'
+                    : language === 'chinese'
+                        ? '0 到 18 的数字'
+                        : '0 到 18 的數字',
             mustFill: true,
             function: (e) => {
                 if (e.target.value > 18) {
@@ -400,10 +376,10 @@ const CreateToken = () => {
                                 {/* 選擇合約模板 */}
                                 <div className="input-group mb-3 d-flex flex-wrap align-items-center">
                                     <Dropdown>
-                                        <Dropdown.Toggle className="form-control width-200 btn btn-primary btn-outline-primary right-radius">{moduleDatas[selectedModuleValue].text}</Dropdown.Toggle>
+                                        <Dropdown.Toggle className="form-control width-200 btn btn-primary btn-outline-primary right-radius">{moduleDatas(language.value)[selectedModuleValue].text}</Dropdown.Toggle>
                                         <Dropdown.Menu align="end">
                                             {
-                                                moduleDatas.map((moduleData, index) => {
+                                                moduleDatas(language.value).map((moduleData, index) => {
                                                     return (
                                                         <div
                                                             key={index}
@@ -420,7 +396,7 @@ const CreateToken = () => {
                                             }
                                         </Dropdown.Menu>
                                     </Dropdown>
-                                    <span className="form-control col-6" style={{ color: 'lightblue' }}> {moduleDatas[selectedModuleValue].fee}</span>
+                                    <span className="form-control col-6" style={{ color: 'lightblue' }}> {moduleDatas(language.value)[selectedModuleValue].fee}</span>
                                 </div>
                                 <div style={{
                                     paddingLeft: '20px',
@@ -428,7 +404,7 @@ const CreateToken = () => {
                                     fontSize: '16px',
                                     paddingTop: '20px'
                                 }}>
-                                    <span>{moduleDatas[selectedModuleValue].description}</span>
+                                    <span>{moduleDatas(language.value)[selectedModuleValue].description}</span>
                                 </div>
                                 {/* 選擇合約模板 */}
 
@@ -448,7 +424,7 @@ const CreateToken = () => {
                                     </h4>
                                     {
                                         isOpen[0] === true &&
-                                        basicDatas.map((data, index) => {
+                                        basicDatas(language.value).map((data, index) => {
                                             return (
                                                 <div key={index} className="input-group mb-3 align-items-center" style={{ paddingLeft: '20px' }}>
                                                     <span className="col-4">{data.text}
@@ -522,7 +498,7 @@ const CreateToken = () => {
                                         {
                                             isOpen[1] === true &&
                                             advancedDropdowns.map((data, index) => {
-                                                if (index === 3 && showRewardContent === false) return;
+                                                if (index === 2 && showRewardContent === false) return;
                                                 return (
                                                     <div key={index} className="input-group mb-3 align-items-center" style={{ paddingLeft: '20px' }}>
                                                         <span className="col-4">{data.text}</span>
@@ -794,7 +770,7 @@ const CreateToken = () => {
                                         onClick={deployContract}
                                         style={{ cursor: 'pointer' }}>Deploy</span>
 
-                                    <span style={{ marginLeft: '20px' }}> {moduleDatas[selectedModuleValue].fee}</span>
+                                    <span style={{ marginLeft: '20px' }}> {moduleDatas(language.value)[selectedModuleValue].fee}</span>
                                 </div>
                             </form>
                         </div>
@@ -805,3 +781,52 @@ const CreateToken = () => {
     )
 }
 export default CreateToken;
+
+export const moduleDatas = (language) => [
+    {
+        text:
+            language === 'english'
+                ? '0 Tax Basic'
+                : language === 'chinese'
+                    ? '0税基础代币'
+                    : '0稅基礎代幣',
+        description:
+            language === 'english'
+                ? `This template doens't contains any tax and has the lowest transaction fee`
+                : language === 'chinese'
+                    ? '该代币模板没有税率且交易所需要的矿工费为最低'
+                    : '該代幣模板沒有稅率且交易所需要的礦工費為最低',
+        fee: '0.05 BNB',
+    },
+    {
+        text:
+            language === 'english'
+                ? 'Market & Liquidity'
+                : language === 'chinese'
+                    ? '营销回流代币'
+                    : '營銷回流代幣',
+        description:
+            language === 'english'
+                ? `This template contains marketing and liquidity fee. The liquidity fee would enlarge the liquidity pool, and the marketing fee would make profits to the project owner.`
+                : language === 'chinese'
+                    ? '该代币模板提供营销以及回流税率, 回流会使的池子越来越大, 稳定币价, 而营销税率可以为项目拥有者提供收益'
+                    : '該代幣模板提供營銷以及回流稅率, 回流會使的池子越來越大, 穩定幣價, 而營銷稅率可以為項目擁有者提供收益',
+        fee: '0.2 BNB',
+    },
+    {
+        text:
+            language === 'english'
+                ? 'Reward, Market & Liquidity'
+                : language === 'chinese'
+                    ? '分红营销回流代币'
+                    : '分紅營銷回流代幣',
+        description:
+
+            language === 'english'
+                ? `This template contains reflection, marketing and liquidity fee. The liquidity fee would enlarge the liquidity pool, the marketing fee would make profits to the project owner, and the reflection fee rewards the holders.`
+                : language === 'chinese'
+                    ? '该代币模板提供分红,营销以及回流税率, 回流会使的池子越来越大, 稳定币价, 营销税率可以为项目拥有者提供收益, 分红税率则可为持币者带来收益'
+                    : '該代幣模板提供分紅,營銷以及回流稅率, 回流會使的池子越來越大, 穩定幣價, 營銷稅率可以為項目擁有者提供收益, 分紅稅率則可為持幣者帶來收益',
+        fee: '0.2 BNB',
+    },
+]
